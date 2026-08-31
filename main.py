@@ -13,8 +13,8 @@ def main():
     ten_sided_die = SimpleDie(rng=random.Random(), sides=10)
 
     # Create new weapons
-    wooden_sword = Sword(name="Wooden Sword", die=five_sided_die)
-    iron_sword = Sword(name="Iron Sword", die=ten_sided_die)
+    wooden_sword = Sword(name="Wooden Sword", damage=five_sided_die)
+    iron_sword = Sword(name="Iron Sword", damage=ten_sided_die)
 
     # Create health object for the player
     player_health = Health(max_health=100)
@@ -31,14 +31,14 @@ def main():
     print(f"Enemy: {enemy.name}, Health: {enemy.health} | Weapon: {enemy.weapon.name}")
 
     # Simulate taking damage
-    enemy_damage = enemy.weapon.die.roll()
+    enemy_damage = enemy.weapon.damage.roll()
     print(f"{enemy.name} attacks {player.name} with {enemy.weapon.name} for {enemy_damage} damage!")
     player.health.take_damage(enemy_damage)
     print(f"{player.name} took {enemy_damage} damage. Current health: {player.health}")
     
     print()
 
-    player_damage = player.weapon.die.roll()
+    player_damage = player.weapon.damage.roll()
     print(f"{player.name} attacks {enemy.name} with {player.weapon.name} for {player_damage} damage!")
     enemy.health.take_damage(player_damage)
     print(f"{enemy.name} took {player_damage} damage. Current health: {enemy.health}")
